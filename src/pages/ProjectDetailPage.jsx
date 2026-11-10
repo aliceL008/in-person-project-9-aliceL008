@@ -1,5 +1,6 @@
 // TODO: Import useParams and useNavigate from react-router-dom
 import { projects } from '../data/projects'
+import { useParams, useNavigate } from 'react-router-dom'
 
 function ProjectDetailPage() {
   // TODO: Get the project id from the URL using useParams
@@ -10,7 +11,9 @@ function ProjectDetailPage() {
 
   // TODO: Find the project based on the id
   // For now, just showing the first project as placeholder
-  const project = projects[0]
+  const { id } = useParams()
+  const navigate = useNavigate()
+  const project = projects.find(p => p.id === id)
 
   // TODO: Handle case where project is not found
   if (!project) {
@@ -18,6 +21,9 @@ function ProjectDetailPage() {
       <div className="error-page">
         <h2>Project not found</h2>
         {/* TODO: Add button to navigate back to projects page */}
+        <button className="btn btn-primary" onClick={() => navigate('/projects')}>
+          Back to Projects
+        </button>
       </div>
     )
   }
@@ -25,7 +31,9 @@ function ProjectDetailPage() {
   return (
     <div className="project-detail-page">
       {/* TODO: Add a back button using navigate(-1) */}
-
+      <button className="btn btn-secondary" onClick={() => navigate(-1)}>
+        ← Back
+      </button>
       <article className="project-detail">
         <header className="project-header">
           <h1>{project.title}</h1>

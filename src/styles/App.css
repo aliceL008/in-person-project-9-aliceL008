@@ -547,6 +547,11 @@
   margin-bottom: var(--spacing-lg);
 }
 
+.project-card-link {
+  color: inherit;
+  text-decoration: none;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
   .navigation {
@@ -574,4 +579,5 @@
   .skills-grid {
     grid-template-columns: 1fr;
   }
+  
 }
